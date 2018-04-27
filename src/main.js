@@ -19,14 +19,15 @@ $(document).ready(function(){
           reject(Error(request.statusText));
         }
       }
-      request("get", url, true);
+      request.open("get", url, true);
+      request.send();
     });
 
     promise.then(function(response){
       let body = JSON.parse(response);
-      $(".showDoctors").append(`${body.data.profile.first_name}`)
+      $(".showDoctors").append(`${body.data.profile[0]}`);
     }, function(error){
-      $(".showErrors").text(`There was an error processing your request: ${error.message}`);
+      $(".errors").text(`There was an error processing your request: ${error.message}`);
     });
   });
 });
