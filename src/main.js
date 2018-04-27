@@ -6,7 +6,6 @@ import './styles.css';
 
 $(document).ready(function(){
   $("#doctorSearch").click(function(){
-    debugger;
     let search = $("#search").val(); //changed location to search
     $("#search").val("");
     let promise = new Promise(function(resolve, reject){
@@ -25,7 +24,8 @@ $(document).ready(function(){
 
     promise.then(function(response){
       let body = JSON.parse(response);
-      $(".showDoctors").append(`${body.data.profile[0]}`);
+      console.log(body.data[0].profile.first_name);
+      $(".showDoctors").append(`${body.data[0].profile.first_name}`);
     }, function(error){
       $(".errors").text(`There was an error processing your request: ${error.message}`);
     });
