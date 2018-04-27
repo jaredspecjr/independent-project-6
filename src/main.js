@@ -27,7 +27,7 @@ $(document).ready(function(){
       for(let i = 0; i <= body.data.length; i++){
 
         if(body.data[i].practices.length === 0){
-          $(".showDoctors").append("Sorry there are no results, Please try another search");
+          i--; i++; //this subtracts the index then adds it again so that the loop doesnt get disturbed and can continue
         } else {
           console.log(body.data[0].practices);
           console.log(i);
