@@ -27,7 +27,7 @@ $(document).ready(function(){
       console.log(body.data[0].profile.first_name);
       for(let i = 0; i <= body.data.length; i++){
 
-        $(".showDoctors").append(`${body.data[i].profile.first_name}` + " " + `${body.data[i].profile.last_name}` + "<br>");
+        $(".showDoctors").append(`${body.data[i].profile.first_name}` + " " + `${body.data[i].profile.last_name}` + "<br>" + `${body.data[i].practices[0].visit_address.street}` + "<br>");
       }
     }, function(error){
       $(".errors").text(`There was an error processing your request: ${error.message}`);
