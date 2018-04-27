@@ -24,10 +24,15 @@ $(document).ready(function(){
 
     promise.then(function(response){
       let body = JSON.parse(response);
-      console.log(body.data[0].profile.first_name);
+      console.log(body.data[0].practices[0].accepts_new_patients);
       for(let i = 0; i <= body.data.length; i++){
 
-        $(".showDoctors").append(`${body.data[i].profile.first_name}` + " " + `${body.data[i].profile.last_name}` + "<br>" + `${body.data[i].practices[0].visit_address.street}` + "<br>");
+        $(".showDoctors").append(`${body.data[i].profile.first_name}` + " " + `${body.data[i].profile.last_name}` + "<br>" + `${body.data[i].practices[0].visit_address.street}` + "<br>" + `${body.data[i].practices[0].phones[0].number}` + "<br>");
+        if(body.data[i].practices[0].accepts_new_patients === true){
+          $(".showDoctors").append("Accepts new patients" + "<br>" + "<br>");
+        } else {
+          $(".showDoctors").append("Does not accept new patients" + "<br>" + "<br>");
+        }
       }
     }, function(error){
       $(".errors").text(`There was an error processing your request: ${error.message}`);
