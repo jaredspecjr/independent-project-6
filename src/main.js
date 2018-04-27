@@ -24,9 +24,12 @@ $(document).ready(function(){
 
     promise.then(function(response){
       let body = JSON.parse(response);
-      console.log(body.data[0].practices[0].accepts_new_patients);
+      console.log(body.data[0]);
       for(let i = 0; i <= body.data.length; i++){
 
+        if(body.data[i].practices[0] === undefined){
+          $(".showDoctors").append("Sorry there are no results, Please try another search");
+        }
         $(".showDoctors").append(`${body.data[i].profile.first_name}` + " " + `${body.data[i].profile.last_name}` + "<br>" + `${body.data[i].practices[0].visit_address.street}` + "<br>" + `${body.data[i].practices[0].phones[0].number}` + "<br>");
         if(body.data[i].practices[0].accepts_new_patients === true){
           $(".showDoctors").append("Accepts new patients" + "<br>" + "<br>");
