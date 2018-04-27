@@ -25,7 +25,10 @@ $(document).ready(function(){
     promise.then(function(response){
       let body = JSON.parse(response);
       console.log(body.data[0].profile.first_name);
-      $(".showDoctors").append(`${body.data[0].profile.first_name}`);
+      for(let i = 0; i <= body.data.length; i++){
+
+        $(".showDoctors").append(`${body.data[i].profile.first_name}`);
+      }
     }, function(error){
       $(".errors").text(`There was an error processing your request: ${error.message}`);
     });
