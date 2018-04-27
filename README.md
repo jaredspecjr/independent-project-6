@@ -13,7 +13,11 @@ This webpage will allow a user to ... more detailed.
 | Specification | Input | Output |
 | --- | --- | --- |
 
-
+| user should be able to search for doctor via the issue they are having | sore throat | information about doctors in your area |
+| should be able to search for the name of the doctor | George | Dr.George |
+| doctors information should include first name, last name, address, phone number, website and whether or not the doctor is accepting new patients | broken ankle | a list of doctors with information.
+| if the api call results in an error then return what the error is.| sore throat | error: sorry something went wrong |
+|if no doctors meet the search criteria then return your own error message| afawgdsgjash | I'm sorry, but the search you entered does not match any results. please try another search. |
 
 
 ## Setup/Installation Requirements
